@@ -1,0 +1,96 @@
+:root {
+  --vp-c-brand-1: #425AEF;
+  --vp-c-brand-2: #5672cd;
+  --vp-c-brand-3: #2a45cf;
+  --vp-c-brand-soft: #4259ef23;
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(215deg, #4584ff 0%, #cf0db9 100%);
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #4584ff 50%,
+    #cf0db9 50%
+  );
+  --vp-home-hero-image-filter: blur(44px);
+
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+}
+
+.VPContent.is-home .VPFooter {
+  display: none;
+}
+
+.VPContent.is-home .has-sidebar .content-container {
+  max-width: 100%;
+}
+
+.VPContent.is-home .main-wrapper {
+  max-width: 100%;
+}
+
+.VPContent.is-home .content-container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.VPContent.is-home .container {
+  max-width: 100%;
+}
+
+.dark {
+  --vp-c-brand-1: #ffc848;
+  --vp-c-brand-2: #ffd666;
+  --vp-c-brand-3: #e6a700;
+  --vp-c-brand-soft: #f2b94b23;
+
+  --vp-c-tip-1: var(--vp-c-brand-1);
+  --vp-c-tip-2: var(--vp-c-brand-2);
+  --vp-c-tip-3: var(--vp-c-brand-3);
+  --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+  --vp-home-hero-name-background: linear-gradient(215deg, #ffc848 0%, #ff9d00 100%);
+
+  --vp-home-hero-image-background-image: linear-gradient(
+    -45deg,
+    #ffc848 50%,
+    #ff9d00 50%
+  );
+
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-text-1);
+  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+:root {
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-text: var(--vp-c-white);
+  --vp-button-brand-bg: var(--vp-c-brand-3);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-hover-text: var(--vp-c-white);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: transparent;
+  --vp-button-brand-active-text: var(--vp-c-white);
+  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+}
