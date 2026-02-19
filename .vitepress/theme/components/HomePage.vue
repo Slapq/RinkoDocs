@@ -29,8 +29,8 @@ onMounted(() => {
           <span class="cursor">|</span>
         </p>
         <div class="hero-actions">
-          <a href="/quick start" class="btn btn-primary">开始使用</a>
-          <a href="/API调用指南/API调用指南" class="btn btn-secondary">API 文档</a>
+          <a href="/RinkoDocs/quick-start.html" class="btn btn-primary">开始使用</a>
+          <a href="/RinkoDocs/API调用指南/API调用指南.html" class="btn btn-secondary">API 文档</a>
         </div>
       </div>
       <div class="scroll-hint">
@@ -71,19 +71,19 @@ onMounted(() => {
       <div class="container">
         <h2 class="section-title">快速链接</h2>
         <div class="links-grid">
-          <a href="/quick start" class="link-card">
+          <a href="/RinkoDocs/quick-start.html" class="link-card">
             <span class="link-icon">🚀</span>
             <span class="link-text">快速开始</span>
           </a>
-          <a href="/API调用指南/API调用指南" class="link-card">
+          <a href="/RinkoDocs/API调用指南/API调用指南.html" class="link-card">
             <span class="link-icon">🔌</span>
             <span class="link-text">API 调用指南</span>
           </a>
-          <a href="/分组机制" class="link-card">
+          <a href="/RinkoDocs/分组机制.html" class="link-card">
             <span class="link-icon">📂</span>
             <span class="link-text">分组机制</span>
           </a>
-          <a href="/联系我们" class="link-card">
+          <a href="/RinkoDocs/联系我们.html" class="link-card">
             <span class="link-icon">📧</span>
             <span class="link-text">联系我们</span>
           </a>
