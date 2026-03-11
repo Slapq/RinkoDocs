@@ -3,6 +3,8 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   srcDir: "docs",
+  base: '/RinkoDocs/',
+  cleanUrls: false,
   
   title: "RinkoDocs",
   description: "The docs for Rinko!",
