@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const slogans = [
   '简洁而强大',
@@ -9,12 +9,33 @@ const slogans = [
 ]
 const currentSlogan = ref(slogans[0])
 const sloganIndex = ref(0)
+const showCardTip = ref(false)
+let cardTipTimer: ReturnType<typeof setTimeout> | null = null
+
+const hintUseQuickLinks = () => {
+  showCardTip.value = true
+
+  if (cardTipTimer) {
+    clearTimeout(cardTipTimer)
+  }
+
+  cardTipTimer = setTimeout(() => {
+    showCardTip.value = false
+    cardTipTimer = null
+  }, 1800)
+}
 
 onMounted(() => {
   setInterval(() => {
     sloganIndex.value = (sloganIndex.value + 1) % slogans.length
     currentSlogan.value = slogans[sloganIndex.value]
   }, 3000)
+})
+
+onBeforeUnmount(() => {
+  if (cardTipTimer) {
+    clearTimeout(cardTipTimer)
+  }
 })
 </script>
 
@@ -29,8 +50,8 @@ onMounted(() => {
           <span class="cursor">|</span>
         </p>
         <div class="hero-actions">
-          <a href="/RinkoDocs/quick-start.html" class="btn btn-primary">开始使用</a>
-          <a href="/RinkoDocs/API调用指南/API调用指南.html" class="btn btn-secondary">API 文档</a>
+          <a href="/quick_start" class="btn btn-primary">开始使用</a>
+          <a href="/api-guide/api-guide" class="btn btn-secondary">API 文档</a>
         </div>
       </div>
       <div class="scroll-hint">
@@ -48,22 +69,47 @@ onMounted(() => {
         </p>
         
         <div class="features-grid">
-          <div class="feature-card">
+          <div
+            class="feature-card"
+            role="button"
+            tabindex="0"
+            @click="hintUseQuickLinks"
+            @keydown.enter="hintUseQuickLinks"
+            @keydown.space.prevent="hintUseQuickLinks"
+          >
             <div class="feature-icon">🚀</div>
             <h3>快速开始</h3>
             <p>了解如何快速上手 RinkoAI，开始你的 AI 之旅</p>
           </div>
-          <div class="feature-card">
+          <div
+            class="feature-card"
+            role="button"
+            tabindex="0"
+            @click="hintUseQuickLinks"
+            @keydown.enter="hintUseQuickLinks"
+            @keydown.space.prevent="hintUseQuickLinks"
+          >
             <div class="feature-icon">🔌</div>
             <h3>API 调用</h3>
             <p>完整的 API 调用指南和示例，满足各种需求</p>
           </div>
-          <div class="feature-card">
+          <div
+            class="feature-card"
+            role="button"
+            tabindex="0"
+            @click="hintUseQuickLinks"
+            @keydown.enter="hintUseQuickLinks"
+            @keydown.space.prevent="hintUseQuickLinks"
+          >
             <div class="feature-icon">📂</div>
             <h3>分组机制</h3>
             <p>了解 RinkoAI 的分组机制，高效管理你的 AI 助手</p>
           </div>
         </div>
+
+        <p v-if="showCardTip" class="card-tip" aria-live="polite">
+          这些是功能介绍卡片，请下滑到「快速链接」区域进行跳转。
+        </p>
       </div>
     </section>
 
@@ -71,19 +117,19 @@ onMounted(() => {
       <div class="container">
         <h2 class="section-title">快速链接</h2>
         <div class="links-grid">
-          <a href="/RinkoDocs/quick-start.html" class="link-card">
+          <a href="/quick_start" class="link-card">
             <span class="link-icon">🚀</span>
             <span class="link-text">快速开始</span>
           </a>
-          <a href="/RinkoDocs/API调用指南/API调用指南.html" class="link-card">
+          <a href="/api-guide/api-guide" class="link-card">
             <span class="link-icon">🔌</span>
             <span class="link-text">API 调用指南</span>
           </a>
-          <a href="/RinkoDocs/分组机制.html" class="link-card">
+          <a href="/group" class="link-card">
             <span class="link-icon">📂</span>
             <span class="link-text">分组机制</span>
           </a>
-          <a href="/RinkoDocs/联系我们.html" class="link-card">
+          <a href="/contact_us" class="link-card">
             <span class="link-icon">📧</span>
             <span class="link-text">联系我们</span>
           </a>
@@ -281,11 +327,17 @@ onMounted(() => {
   border: 1px solid var(--vp-c-divider);
   text-align: center;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
   border-color: var(--vp-c-brand-1);
+}
+
+.feature-card:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
 }
 
 .feature-icon {
@@ -302,6 +354,17 @@ onMounted(() => {
   color: var(--vp-c-text-2);
   margin: 0;
   line-height: 1.6;
+}
+
+.card-tip {
+  margin: 1.25rem auto 0;
+  max-width: 560px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--vp-c-brand-1);
+  background: color-mix(in srgb, var(--vp-c-brand-1) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 35%, transparent);
 }
 
 .links-grid {
